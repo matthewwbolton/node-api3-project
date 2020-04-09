@@ -75,6 +75,18 @@ router.put("/:id", (req, res) => {
 
 function validatePostId(req, res, next) {
   // do your magic!
+  posts
+    .getById(req.params.id)
+    .then((post) => {
+      if (post) {
+        next();
+      } else {
+        res.status(404).json({ error: "The specified post ID is invalid!" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Server Error" });
+    });
 }
 
 module.exports = router;
