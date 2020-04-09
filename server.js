@@ -19,6 +19,6 @@ function logger(req, res, next) {
   next();
 }
 
-function validateUserId(req, res, next) {}
+// function validateUserId(req, res, next) {}
 
 module.exports = server;
